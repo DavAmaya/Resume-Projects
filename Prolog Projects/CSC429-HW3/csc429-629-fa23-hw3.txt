@@ -1,0 +1,195 @@
+% Homework 3 (HW3) - CSC429/629 Fall 2023 - Points: 5
+% Due: 11:59 PM Oct. 30, 2023
+% Lateness penalty: -1 per day.
+
+% This is a 1 or 2 person assignment. Type your name(s) below:
+% 1.David Amaya Hernandez
+% 2.
+% If 2 persons work on this, you should submit a 
+% duplicate copy on Canvas under each of your names.
+% You may not collaborate with anyone except your partner.
+% By submitting this assignment, you implicitly agree to abide
+% by the Computer Science Dept. Academic Integrity Policy.
+
+% DO NOT USE THESE PROLOG FEATURES IN THIS ASSIGNMENT!! YOU
+% WILL NOT RECEIVE CREDIT FOR A SOLUTION CONTAINING THESE: 
+% "assert", ";", "->".
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% What to turn in:
+% 1. Submit a copy of your program on Canvas named HW3.txt.
+%    The digital copy will be used in case the grader needs to 
+%    run your program to verify that it works, and to determine 
+%    the submission time if late.  Each student on a team should
+%    submit a duplicate copy on Canvas under his/her own name.
+% 2. Submit a copy of your SCREEN SHOTS on Canvas as
+%    a .pdf, .doc, or .docx file. Turn in one document with all
+%    screen shots. Do not use a phone to photograph the screen.
+%    Use "print screen" (PrtSc) and paste into a document.
+%    Eact student on a team should submit a copy on Canvas
+%    under his/her own name. 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Problem: Use Bratko's BN interpreter in fig15_11_mod on Canvas.
+% Build a Bayesian network like the one described in
+% HW3-description-fa23.docx.  Then ask the user if the patient lives 
+% in a high pollution area, smokes, coughs, and has a positive 
+% x-ray.  Then use the BN to compute the probability that the
+% patient has asthma or cancer and tell the user as in this
+% dialog:
+% Does the patient live in high pollution area? (y n):
+% Does the patient smoke? (y n):
+% Does the patient cough? (y n):
+% Is the chest x-ray positive? (y n):
+% Probability of asthma: 
+% Probability of cancer:
+% Therefore, ____ is the more likely cause.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Edit this file - add your solution to the steps below.
+% Make your solution readable using indentation and white
+% space. Do not use a line length that will wrap when printed.
+% To run this file, rename it with a .pl extension if your are
+% using SWI Prolog, or the proper extension for whatever Prolog
+% you are using - you may use any standard Prolog interpreter.
+
+% Directives (must be at the top of your SWI Prolog program).
+% Syntax may differ in other Prolog interpreters.
+
+:- dynamic p/2.
+:- dynamic p/3.
+
+% Step 1:  Define the graph HERE using the syntax required by
+% Bratko's BN interpreter.  Example: if there is an arc
+% in the BN from node a to node b (a is the parent of b), say: 
+% parent(a, b).    
+% Note: Use lower case letters for nodes!!
+
+parent(hp, a).
+parent(sm, ca).
+parent(a, co).
+parent(ca, co).
+parent(ca, x).
+
+
+
+% Step 2: Define the prior probabilities HERE
+% in the syntax for Bratko's BN interpreter.
+% Example: p(b, 0.001). % prior probability of b is 0.001
+% Note: Use lower case "p" in step 2 and step 3!!
+
+p(hp, 0.3).
+p(sm, 0.2).
+
+
+
+% Step 3: Define the conditional probability tables HERE
+% in the syntax for Bratko's BN interpreter.
+% Note: the 1st argument is a node, the 2nd argument
+% is a list of nodes or negated nodes, and the 3rd
+% argument is the conditional probablity.
+% Example syntax: 
+% p(sensor, [burglary, not(lightning)], 0.9).
+% Note: the above in mathematical notation is:
+% P(sensor | burglary & -lightening) = 0.9
+
+p(a, [hp], 0.7).
+p(a, [not(hp)], 0.2).
+
+p(ca,[sm], 0.4).
+p(ca, [not(sm)], 0.1).
+
+p(co, [a, ca], 0.9).
+p(co, [not(a), ca], 0.4).
+p(co, [a, not(ca)], 0.7).
+p(co, [not(a), not(ca)], 0.2).
+
+p(x, [ca], 0.9).
+p(x, [not(ca)], 0.03).
+
+
+
+% Step 4: Follow these instructions for running your HW3 
+%   with my modification of Bratko's BN interpreter:
+%   1. Copy fig15_11_mod.pl (my mod of Bratko's BN interpreter) 
+%      from Canvas to your computer.
+%   2. Start Prolog on your HW3 program. Before running your 
+%      program, tell Prolog to consult fig15_11_mod.pl
+%      (in SWI Prolog, you would use menu commands: File
+%      menu -> Consult -> fig15_11_mod.pl)
+
+
+% Step 5: Implement the dialog with the user here to
+% call the BN with the values given by the user. Use
+% the same questions as in the sample dialog below.
+% It is not necessary to check for bad user input, 
+% but it should work for any valid answers!
+% Sample dialogue:
+% :- go.
+% Does the patient live in high pollution area? (y n):
+% Does the patient smoke? (y n):
+% Does the patient cough? (y n):
+% Is the chest x-ray positive? (y n):
+% Probability of asthma: ___  (output the probability)
+% Probability of cancer: ___  (output the probability)
+% Therefore, ____ is the more likely cause.
+
+% Give screen shots of the dialog for these user inputs:
+% Pollution    	Smoke	Cough	X-ray
+% y             y       y       y
+% y             n       y       n
+% n             y       y       y
+% n             n       y       n
+
+
+hpCond('y', hp).
+hpCond('n', not(hp)).
+
+smCond('y', sm).
+smCond('n', not(sm)).
+
+coCond('y', co).
+coCond('n', not(co)).
+
+xCond('y', x).
+xCond('n', not(x)).
+
+cond1([First | Rest], [Cond | RestCond]):-
+    hpCond(First, Cond),
+    cond2(Rest, RestCond).
+
+cond2([First | Rest], [Cond | RestCond]):-
+    smCond(First, Cond),
+    cond3(Rest, RestCond).
+
+cond3([First | Rest], [Cond | RestCond]):-
+    coCond(First, Cond),
+    cond4(Rest, RestCond).
+
+cond4([First | _], [Cond]):-
+    xCond(First, Cond).
+
+asthma(Cond, P):-
+    prob(a, Cond, P).
+cancer(Cond, P):-
+    prob(ca, Cond, P).
+
+higherProb(P1, P2, Cause):-
+    P1 > P2, !, Cause = "asthma".
+higherProb(_, _, Cause):-
+    Cause = "cancer".
+
+go:- 
+    write("Does the patient live in high pollution area?(y/n): "), read(X), nl,
+    write("Does the patient smoke?(y/n): "), read(X1), nl,
+    write("Does the patient cough?(y/n): "), read(X2), nl,
+    write("Is the chest x-ray positive?(y/n): "), read(X3), nl,
+    cond1([X, X1, X2, X3], Cond),
+    asthma(Cond, P1), 
+    cancer(Cond, P2),
+    write("Probabitlity of asthma: "), write(P1), nl,
+    write("Probability of cancer: "), write(P2), nl,
+	higherProb(P1, P2, Cause),
+    write("Therefore, "), write(Cause),
+    write(" is more likely the cause.").
+
+

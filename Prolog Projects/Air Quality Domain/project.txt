@@ -1,0 +1,89 @@
+% Project - CSC429/629 Fall 2023 - Points: 10
+% Due: 12:30 PM, Nov 14
+% Lateness penalty: -2 per day 
+
+% This is a 1 or 2 person assignment. Type your name(s) below:
+% 1.
+% 2.
+% If 2 persons work on this, both of you should submit a 
+% duplicate copy on Canvas under each of your names.
+% You may not collaborate with anyone except your partner.
+% By submitting this assignment, you implicitly agree to abide
+% by the Computer Science Department Academic Integrity Policy.
+
+% DO NOT USE THESE PROLOG FEATURES IN THIS ASSIGNMENT!! YOU
+% WILL NOT RECEIVE CREDIT FOR A SOLUTION CONTAINING THESE: 
+% ";", "->". Do not use "assert" in the part of the program
+% that uses the BN; "assert" should be used only to assert
+% facts used by the forward chaining rules.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% What to turn in:
+%    Submit a copy of your program on Canvas named project.txt.
+%    The digital copy will be used in case the grader needs to 
+%    run your program to verify that it works, and to determine 
+%    the submission time if late.  Each student on a team should
+%    submit a duplicate copy on Canvas under his/her own name.
+%    (Include screen shots with your Design Document.)
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Problem: For a detailed description of the project requirements
+% see the project document on Canvas. 
+  
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Edit this file - add your solution to the steps below.
+% Make your solution readable using indentation and white
+% space. Do not use a line length that will wrap when printed.
+% To run this file, rename it with a .pl extension if your are
+% using SWI Prolog, or the proper extension for whatever Prolog
+% you are using - you may use any standard Prolog interpreter.
+% Follow these instructions for running HW5: 
+%   1. Copy fig15_11_mod.pl (my mod of Bratko's BN interpreter) 
+%      from Canvas to your computer.
+%   2. Copy fig15_7_mod_1.6.17.pl (my version of Bratko's FC rule
+%      interpreter) from Canvas to your computer.  
+%   3. Start Prolog on your program. Before running your 
+%      program, tell Prolog to consult fig15_11_mod.pl and
+%      fig15_7_mod_1.6.17.pl (in SWI Prolog, you would use menu 
+%      commands: Filemenu -> Consult -> ... )
+%   4. Warning: if you run the FC rules more than once, 
+%      retract the facts, or just QUIT prolog and start
+%      over to flush the facts from memory. 
+
+%% HW2&3 Directives (must be at top of SWI Prolog program)
+%  Syntax may differ in other Prolog interpreters. 
+:- dynamic fact/1.
+:- dynamic p/2.
+:- dynamic p/3.
+
+% Operator definitions for forward chaining if-then rules.
+:- op(800,fx,if).
+:- op(700,xfx,then).
+:- op(300,xfy,or).
+:- op(200,xfy,and).
+
+% Step 1:  Define the BN graph using the syntax required by
+% Bratko's BN interpreter as in HW3.
+
+
+
+% Step 2: Define the BN prior probabilities here as in HW3
+
+
+
+% Step 3: Define BN conditional probability tables here as in HW3
+
+
+
+
+% Step 4:  Define FC rules here as in HW2:
+
+
+
+% Step 5:  Implement the main program recommend here
+
+
+
+
+
+

@@ -1,0 +1,240 @@
+% Homework 1 (HW1.txt) - CSC429/629 - Fall 2023
+% Due: on Canvas Sep 18, 2023 EOD
+% Total points: 5 (one point per problem)
+% Lateness penalty: -1 per day 
+
+% This is a 1 or 2 person assignment. Type your name(s) below:
+% 1.
+% 2.
+% If 2 persons work on this, each of you should submit a 
+% duplicate copy on Canvas under your own name.
+% You may not collaborate with anyone except your partner.
+% By submitting this assignment, you agree to abide by
+% the Computer Science Dept. Academic Integrity Policy.
+
+% Each problem requires you to implement a few lines of Prolog.
+% Edit this file to add your solution to each problem.
+% Make your solution readable using indentation and white
+% space. Do not use a line length that will wrap when printed.
+%
+% DO NOT USE THESE PROLOG FEATURES IN THIS ASSIGNMENT!! YOU
+% WILL NOT RECEIVE CREDIT FOR A PROBLEM CONTAINING THESE: 
+% "assert", ";"
+
+% To run this file, rename it with a .pl extension if your are
+% using SWI Prolog, or the proper extension for whatever Prolog
+% you are using. (You may use any standard Prolog interpreter.)
+% NOTE: the PROLOG that you use may answer true/false or yes/no.
+% Either is ok. 
+
+% What to turn in:
+% 1. This .txt file with your solutions added to it. Submit as
+%    .txt on Canvas. (The Canvas file may
+%    be used to verify that your program works. Also, the date
+%    submitted on Canvas will be used to determine lateness.)
+% 2. Screen shots showing the output of your program ON THE
+%    TEST CASES/DATA given with each problem. Submit screen shots
+%    all in one .pdf file on Canvas.  
+%    Do NOT turn in a separate file (such as 
+%    .png) for each screen shot!! Do NOT use your phone or camera
+%    to make screen shots!! Screen shots must be readable.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% problem 1 (simple recursion) 1 point
+
+% Given facts:
+
+in(toy, greenbox).    % toy is in greenbox
+in(greenbox, redbox). % greenbox is in redbox
+in(redbox, bluebox).  % redbox is in bluebox
+
+% Implement a predicate find_in(X,Y) that is true iff
+%   X is in Y or X can be found in an object in Y.
+%   Use recursion. The predicate should work for
+%   any facts in(Obj1, Obj2) such as given above.
+
+% Test cases:
+% ?- find_in(toy, greenbox).
+% true.
+% ?- find_in(toy, redbox).
+% true.
+% ?- find_in(toy, bluebox).
+% true.
+% ?- find_in(greenbox, bluebox).
+% true.
+% ?- find_in(toy, orangebox).
+% false.
+
+% Write your solution here:
+
+
+in(toy, greenbox).
+in(greenbox, redbox).
+in(redbox, bluebox).
+find_in(X, Y):- 
+    in(X,Y), !.
+find_in(X,Y):- 
+    in(Y, X1),
+    in(X, _),
+    find_in(Y, X1), !.
+find_in(X,Y):- 
+    in(X, Y1), 
+    in(Y1, _),
+    find_in(Y1,Y).
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% problem 2 (recursive arithmetic) 
+
+% Implement minlist(L, M) such that M is the minimum integer in list L.
+% Assume L is a non-empty integer list.
+
+% Test cases:
+% ?- minlist([1,2,3], M).
+% M = 1.
+% ?- minlist([4,3,2], M).
+% M = 2.
+% ?- minlist([5,4,2,3], M).
+% M = 2.
+
+% Write you solution here:
+
+min(0,0, M):- M is 0.
+min(X,Y,M):- X < Y, M is X, !.
+min(_, Y, M):- M is Y.
+minlist([],M):- M is 0.
+minlist([M], M).
+minlist([F|R], M):- minlist(R, M1), min(F, M1, M), !.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% problem 3 (recursion with lists)
+
+% Implement compare(L1, L2) that returns true iff the elements of
+% list L1 match (in the same order) the elements of list L2.
+% Assume that the elements of L1 are atoms (not lists). 
+% Implement using recursion.
+
+% Test cases:
+% ?- compare([], []).
+% true.
+% ?- compare([_], []).
+% false.
+% ?- compare([a, b, c, d], [a, b, c, d]).
+% true.
+% ?- compare([a, b, c], [c, b, a]).
+% false.
+% ?- compare([a, b], [a, b, c]).
+% false.
+
+% write your solution here:
+
+equal(X,Y):- X = Y.
+compare([], []):-!.
+compare([F|R], [F2|R2]):- equal(F, F2), compare(R,R2).
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Problem 4 (simple Cartesian geometry using structures)
+
+% Implement perimeter(Shape, N), where Shape is defined as a
+%   triangle as follows: tria(P1, P2, P3), and
+%   P1-P2 are each points of the form point(X,Y), and X and Y
+%   are coordinates on the X and Y axis, respectively, and 
+%   the edges are listed counterclockwise starting at the lower
+%   left: P1 to P2, P2 to P3, and P3 to P1; and N is the
+%   perimeter (sum of the lengths of the edges). To implement 
+%   this for any triangle, you will need to use the Pythagorian
+%   theorem. If a line segment Z starts at (X1,Y1) and ends at (X2, Y2),
+%   the length of Z is the square root of (X1-X2)**2 + (Y1-Y2)**2.  
+%   Use the built-in square root operator in Prolog; for example:
+%   ?- A is sqrt(4).
+%   A = 2.0.
+
+%   Test cases:
+%   Example 1:
+%   ?- perimeter(tria(point(1,1), point(1,2), point(2,2)), A).
+%   A = 3.4142.
+%   Example 2:
+%   ?- perimeter(tria(point(1,1),point(1,5),point(1,6)), A).
+%   A = 10.0.
+%   Example 3: irregular polygon
+%   ?- perimeter(tria(point(2,1), point(2,3), point(6,3)), A).
+%   A = 10.4721.
+
+%   Hint: simplify your program by implementing a predicate to compute
+%   the length of a line segment.
+%   Write your solution here:
+
+tria(_,_,_):-!.
+tria(X,Y,Z):- 
+    X = point(_,_), Y = point(_,_), Z = point(_,_).
+calc_side(X,Y,A):- 
+    X = point(X1,Y1), Y = point(X2,Y2), 
+    integer(X1), integer(Y1),
+    integer(X2), integer(Y2),
+    A1 is (X1-X2)**2 + (Y1-Y2)**2,
+    A is sqrt(A1). 
+perimeter(tria(X,Y,Z), A):-
+    calc_side(X,Y,A1), calc_side(Y,Z,B), calc_side(Z,X,C),
+    A2 is A1 + B, A is A2 + C.
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Problem 5 (Recursion with read-write loop)
+
+% Implement a predicate, chat, that replies like a simple chatbot 
+% to a word the user types in, & stops when the user types stop.
+% See the sample dialog below. You can invent your own chatbot
+% replies, but they should incorporate the user's word.
+% Implement the interactive loop using recursion.
+
+% Sample dialog:
+% ?- chat.
+% hello I am a chatbot
+% when you see "user:" type a word followed by "."
+% or type "stop." if you want to stop this nonsense!
+% user: hello.
+% Who likes hello?
+% user: everyone.
+% What is everyone?
+% user: nothing.
+% Do you like nothing?
+% user: yes.
+% Could you please stop talking about yes?
+% user: ok.
+% Could you please stop talking about ok?
+% user: stop.
+% true.
+ 
+% Write your solution here:
+ 
+chat:- write('Hello, I am chatbox'), nl,
+    write('When you see "user:" type a word followed by "."'), nl,
+    write('or type "stop." if you want to stop this nonsense!'), nl,
+    write('user: '), read(X1), chatbox(X1,1).
+chatbox(stop, Y):- Y > 0, !.
+chatbox(X,Y):- 
+    Y = 1, write('Who likes '), write(X), write('?'), 
+    nl, write('user:'), read(X2), Y1 is Y + 1, chatbox(X2, Y1), !.
+chatbox(X,Y):-
+    Y = 2, write('What is '), write(X), write('?'),
+    nl, write('user:'), read(X3), Y1 is Y + 1, chatbox(X3, Y1), !.
+chatbox(X,Y):-
+    Y = 3, write('do you like '), write(X), write('?'),
+    nl, write('user:'), read(X4), Y1 is Y + 1, chatbox(X4,Y1), !.
+chatbox(X,Y):- Y >= 4,
+    write('Could you please stop talking about '),
+    write(X), write('?'), nl, write('user:'),
+    read(X1), Y1 is Y + 1, chatbox(X1,Y1), !.
+
+
+
+
+
+
+
+
+
