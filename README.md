@@ -12,7 +12,7 @@
 ## C and JAVA projects
 [C projects](./C%20Projects/)
 [Java Project](./Java%20Projects/)
-### These projects were assign or optional projects to keep us in practice and learn new methods which I enjoyed creating and am proud of the outcomes of these projects. A couple of the java projects were group projects for a small program.
+### These projects are porject that I did, to improve my problem solving skill, and the Shell project in the 'C project", mimics a command line like bash and has a custom prompt if the user pleases.
 
 ## Prolog Projects 
 [Prolog](./Prolog%20Projects/)
