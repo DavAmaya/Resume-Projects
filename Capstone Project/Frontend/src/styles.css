@@ -1,0 +1,269 @@
+body {
+  font-family: sans-serif;
+  background-color: #ffffff;
+  color: black;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  padding: 10px;
+  border-bottom: thick solid #000000;
+}
+
+button {  background-color: lightslategray;
+  height: auto;
+}
+
+.dark-mode {
+  background-color: #1f2c2e;
+  color: white;
+}
+
+.dark-mode th {
+  color: #1f2c2e;
+}
+
+.dark-mode td {
+  background-color: #1f2c2e;
+}
+
+.dark-mode header {
+  border-bottom-color: white;
+}
+
+.dark-mode .bar {
+  background-color: white;
+}
+
+.dark-mode .dropdown-arrow {
+  border-color: #fff transparent transparent transparent;
+}
+
+.dark-mode .signup-content {
+  color: #1f2c2e;
+}
+
+.dark-mode .close {
+  color: #1f2c2e;
+}
+
+.light-mode {
+  background-color: white;
+  color: black;
+}
+
+h1 {
+  color: #4169e1;
+  margin: 0;
+}
+
+.hamburger-menu {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 20px;
+  background-color: #ffffff;
+  border: 1px solid #000000;
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 10px;
+  text-decoration: none;
+  color: #000000;
+}
+
+.signup-popup {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 9999;
+}
+
+.signup-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fefefe;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  font-size: 20px;
+}
+
+.signup-content a {
+  display: block;
+  padding: 10px;
+  text-decoration: none;
+  color: #000000;
+}
+
+.signup-content h2 {
+  margin-top: 3px;
+}
+
+.signup-content input,
+.signup-content button {
+  display: block;
+  width: 90%;
+  padding: 10px;
+  margin-bottom: 10px;
+  font-size: 15px;
+}
+
+.signup-content button {
+  background-color: #4169e1;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.close {
+  position: absolute;
+  top: 0;
+  right: 5px;
+  cursor: pointer;
+}
+
+.bar {
+  width: 25px;
+  height: 3px;
+  background-color: black;
+  margin: 3px 0;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+}
+
+.dark-mode .container {
+  background-color: #1f2c2e;
+}
+
+.digit {
+  font-size: 150px;
+}
+.txt {
+  font-size: 30px;
+}
+
+.calendar-container {
+  position: relative;
+  display: inline-block;
+  padding: 10px;
+}
+.dropdown-arrow {
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 5px 5px 0 5px;
+  border-color: #000 transparent transparent transparent;
+  position: absolute;
+  top: 100%;
+  right: 50%;
+  transform: translateX(50%);
+  cursor: pointer;
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #f9f9f9;
+  min-width: 900px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  z-index: 1;
+}
+.calendar-container:hover .dropdown-content {
+  display: block;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+th,
+td {
+  padding: 10px;
+  border: 1px solid #ddd;
+  text-align: center;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+td {
+  height: 30px;
+}
+
+content {
+  display: column;
+}
+
+.todo-list {
+  float: right;
+  margin-top: 4px;
+}
+
+.todo-list ul {
+  padding: 0;
+}
+
+.todo-list h4 {
+  margin: 0;
+}
+
+.cont {
+  display: flex;
+  width: 100%;
+  padding: 10px;
+}
+
+.music-overlay {
+  float: right;
+  padding: 20px 20px;
+}
+
+.signupMenubutton {
+  background: #0b1618;
+  padding: 20px 20px;
+  width: 100%;
+  padding-top: 10px;
+  margin-right: 30px;
+  border-radius: 1000px;
+  color: #4169e1;
+  font: normal bold 24px/1 "Ubuntu", sans-serif;
+  display: inline-block;
+  text-align: center;
+  cursor: pointer;
+}
+
+.signupMenubutton:hover {
+  background: #122326;
+}
+
+.todoList{
+  border-radius: 20px;
+  margin-top: -320px;
+  
+}

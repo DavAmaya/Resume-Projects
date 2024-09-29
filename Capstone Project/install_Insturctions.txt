@@ -1,0 +1,22 @@
+Frontend installs:
+-npm install
+-npm install react-lottie
+-npm axios
+-npm install react-loading
+
+
+Backend installs:
+- npm install express body-parser
+- npm install nodemon querystring
+- npm install cors request bcrypt
+- npm install oracle-nosqldb jsonwebtoken
+- npm install express-session cookie-parser
+- npm install loudness
+- npm run devStart
+
+Timer installs:
+npm install --save react-circular-progressbar
+npm install react-slider
+
+runtime refresh error:
+-> ReactScripts -> node_modules -> runtime refresh(delete folder)

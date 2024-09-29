@@ -1,0 +1,138 @@
+.to-do-list {
+  font-family: Arial, sans-serif;
+  text-align: right;
+  margin-top: -200px;
+  width: 500px;
+  margin-right: 50px;
+  margin-bottom: 100px;
+  float: right;
+  padding: 0px 40px 20px;
+
+}
+
+
+.text {
+  flex: 1;
+  color: black;
+}
+.delete,
+.move {
+  padding: 8px 12px;
+  font-size: 1.4rem;
+  margin-left: 10px;
+}
+
+h1 {
+  font-size: 4rem;
+}
+button {
+  background: none;
+  border: none;
+  width: fit-content;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.add {
+  background-color: hsl(120, 100%, 25%);
+}
+.add:hover {
+  background-color: hsl(120, 100%, 15%);
+}
+.delete {
+  background-color: hsl(0, 100%, 50%);
+}
+.delete:hover {
+  background-color: hsl(0, 100%, 40%);
+}
+.move {
+  background-color: hsl(209, 100%, 50%);
+}
+.move:hover {
+  background-color: hsl(209, 100%, 40%);
+}
+input[type="text"] {
+  font-size: 1.6rem;
+  padding: 10px;
+  border: 2px solid hsl(0, 0%, 80%, 0.5);
+  border-radius: 5px;
+  color: hsl(0, 0%, 0%, 0.5);
+}
+ol {
+  padding: 0;
+  width: 100%;
+  list-style-type: none;
+  align-items: center;
+  
+}
+li {
+  font-size: 1.5rem;
+  font-weight: bold;
+  padding: 10px 20px;
+  margin-top: 30px;
+  margin-left: 20px;
+  background-color: hsl(0, 0%, 97%);
+  margin-bottom: 10px;
+  border: 3px solid hsla(0, 0%, 85%, 0.75);
+  border-radius: 20px;
+  align-items: center;
+  display: inline-flex;
+  overflow: hidden;
+}
+.text {
+  flex: 1;
+  font-size:x-large;
+  font: bolder;
+  color: black;
+}
+.delete,
+.move {
+  padding: 8px 12px;
+  font-size: 1.4rem;
+  margin-left: 10px;
+}
+
+.date-input {
+  /* Apply general input styles */
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  width: 200px; /* Adjust width as needed */
+
+  /* Remove default arrow icon */
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: none;
+}
+
+.scroll {
+  scrollbar-width: thin;
+  overflow-y: auto;
+  max-height: 400px;
+  align-items: center;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.buttons { 
+  background: solid;
+  border: none;
+  width: fit-content;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon:hover {
+  fill: #2a4d8b;
+}
+
+.deleteB:hover {
+  fill:hsl(0, 82%, 41%)
+}
+
+.icon {
+  transition: color 0.3s; /* Smooth transition for color change */
+}
