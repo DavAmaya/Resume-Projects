@@ -1,0 +1,109 @@
+.App {
+  text-align: center;
+  color: #005e8a;
+}
+
+.App1 {
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+  height: 800px;
+}
+
+.red {
+  display: block;
+  width: 100%;
+  margin-top: 0.25rem;
+  font-size: .875em;
+  color: #d9534f;
+}
+
+.red-border {
+  border: 1px solid #dc3545;
+}
+
+.Searchbar {
+  margin-left: 1050px;
+  margin-top: 10px;
+  align-items: center;
+}
+
+#header {
+  margin-left: 5px;
+  margin-top: 10px;
+  margin-right: 5px;
+  padding: 0;
+  background: #4c6ca0;
+  border-radius: 20px;
+  overflow: auto;
+}
+
+#header li {
+  list-style: none;
+  float: left;
+}
+
+#header li a {
+  display: block;
+  color: #fff;
+  text-decoration: none;
+  padding: 15px 20px;
+}
+
+#header li a:hover {
+  background-color: #446190;
+  color: #f4f4f4;
+}
+
+
+#main{
+  clear: both;
+  display: table;
+  margin-top: 3px;
+}
+
+#spacer{
+  margin-right: 4px;
+}
+
+#Info {
+  display: table-cell;
+  color: brown;
+  background-color: whitesmoke;
+  border: 3px solid grey;
+  border-radius: 10px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding: 10px;
+
+}
+
+
+
+#sidebar {
+  display: table-cell;
+  width: 300px;
+  background-color: whitesmoke;
+  border: 3px solid grey;
+  border-radius: 10px;
+  color: brown;
+
+}
+
+.sidebar ul {
+  color: purple;
+}
+
+.sidebar li a:hover {
+  color: orange;
+}
+
+#medChartbtn {
+  background-color: rgba(101, 165, 207, 0.822);
+  border: rgba(101, 165, 207, 0.822);
+  cursor:pointer;
+  margin-bottom: 10px;
+}
+
+#medChartbtn:hover {
+  background: #005e8a;
+}
