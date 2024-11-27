@@ -17,35 +17,36 @@ parent(ni, uo).
 parent(ds, db).
 parent(uo, db).
 
-p(w,  0.45).
-p(i, 0.35).
-p(mv,  0.42).
+p(w,  0.30).
+p(i, 0.50).
+p(mv,  0.60).
 
 
 
-p(r, [w], 0.53).
-p(r, [not(w)], 0.45).
+p(r, [w], 0.75).
+p(r, [not(w)], 0.30).
 
-p(ds, [i, w], 0.65).
-p(ds, [i, not(w)], 0.95).
-p(ds, [not(i), w], 0.68).
-p(ds, [not(i), not(w)], 0.68).
+p(ds, [i, w], 0.85).
+p(ds, [i, not(w)], 0.60).
+p(ds, [not(i), w], 0.75).
+p(ds, [not(i), not(w)], 0.40).
 
-p(ht, [mv], 0.58).
-p(ht, [not(mv)], 0.58).
+p(ht, [mv], 0.70).
+p(ht, [not(mv)], 0.40).
 
-p(uo, [ni, mv], 0.59).
-p(uo, [ni, not(mv)], 0.54).
-p(uo, [not(ni), mv], 0.55).
-p(uo, [not(ni), not(mv)], 0.54).
+p(uo, [ni, mv], 0.80).
+p(uo, [ni, not(mv)], 0.65).
+p(uo, [not(ni), mv], 0.50).
+p(uo, [not(ni), not(mv)], 0.30).
 
-p(db, [ds, uo], 0.72).
-p(db, [ds, not(uo)], 0.72).
-p(db, [not(ds), uo], 0.71).
-p(db, [not(ds), not(uo)], 0.72).
+p(db, [ds, uo], 0.85).
+p(db, [ds, not(uo)], 0.70).
+p(db, [not(ds), uo], 0.65).
+p(db, [not(ds), not(uo)], 0.40).
 
-p(ni, [i], 0.48).
-p(ni, [not(i)], 0.33).
+p(ni, [i], 0.70).
+p(ni, [not(i)], 0.25).
+
 
 
 go:- 
